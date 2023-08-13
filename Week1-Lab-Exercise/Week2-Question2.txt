@@ -2,48 +2,63 @@
 CODE:
 
 #include <stdio.h>
-#include <stdlib.h> 
+#include <stdlib.h>
 
-int main()
-{
+int main() {
     int state = 0, i = 0;
     char token, input[20];
+
     printf("Enter input string: ");
     scanf("%s", input);
 
-    while ((token = input[i++]) != '\0')
-    {
-        switch (state)
-        {
+    while ((token = input[i++]) != '\0') {
+        switch (state) {
             case 0:
                 if (token == 'a')
-                    state = 1;
+                    state = 4;
                 else if (token == 'b')
-                    state = 2;
-                else
-                {
+                    state = 1;
+                else {
                     printf("Invalid token\n");
                     exit(0);
                 }
                 break;
             case 1:
                 if (token == 'a')
-                    state = 1;
+                    state = 4;
                 else if (token == 'b')
                     state = 2;
-                else
-                {
+                else {
                     printf("Invalid token\n");
                     exit(0);
                 }
                 break;
             case 2:
                 if (token == 'a')
-                    state = 1;
+                    state = 4;
                 else if (token == 'b')
                     state = 2;
-                else
-                {
+                else {
+                    printf("Invalid token\n");
+                    exit(0);
+                }
+                break;
+            case 3:
+                if (token == 'a')
+                    state = 3;
+                else if (token == 'b')
+                    state = 1;
+                else {
+                    printf("Invalid token\n");
+                    exit(0);
+                }
+                break;
+            case 4:
+                if (token == 'a')
+                    state = 3;
+                else if (token == 'b')
+                    state = 1;
+                else {
                     printf("Invalid token\n");
                     exit(0);
                 }
@@ -51,10 +66,10 @@ int main()
         }
     }
 
-    if (state == 2)
-        printf("\nString accepted\n");
+    if (state == 2 || state == 3)
+        printf("\n\nString accepted\n\n");
     else
-        printf("\nString not accepted\n");
+        printf("\n\nString not accepted\n\n");
 
-    return 0; 
+    return 0;
 }
