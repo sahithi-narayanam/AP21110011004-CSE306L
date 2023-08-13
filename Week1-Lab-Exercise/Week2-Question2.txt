@@ -1,0 +1,60 @@
+//Implementation of Language recognizer for a set of all strings ending with two symbols of the same type.
+CODE:
+
+#include <stdio.h>
+#include <stdlib.h> 
+
+int main()
+{
+    int state = 0, i = 0;
+    char token, input[20];
+    printf("Enter input string: ");
+    scanf("%s", input);
+
+    while ((token = input[i++]) != '\0')
+    {
+        switch (state)
+        {
+            case 0:
+                if (token == 'a')
+                    state = 1;
+                else if (token == 'b')
+                    state = 2;
+                else
+                {
+                    printf("Invalid token\n");
+                    exit(0);
+                }
+                break;
+            case 1:
+                if (token == 'a')
+                    state = 1;
+                else if (token == 'b')
+                    state = 2;
+                else
+                {
+                    printf("Invalid token\n");
+                    exit(0);
+                }
+                break;
+            case 2:
+                if (token == 'a')
+                    state = 1;
+                else if (token == 'b')
+                    state = 2;
+                else
+                {
+                    printf("Invalid token\n");
+                    exit(0);
+                }
+                break;
+        }
+    }
+
+    if (state == 2)
+        printf("\nString accepted\n");
+    else
+        printf("\nString not accepted\n");
+
+    return 0; 
+}
