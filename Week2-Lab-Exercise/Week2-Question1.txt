@@ -1,0 +1,63 @@
+// Node structure for the binary search tree
+import java.util.Scanner;
+
+class Node {
+    String identifier;
+    String value; // Associated information
+    Node left;
+    Node right;
+
+    Node(String id, String val) {
+        identifier = id;
+        value = val;
+        left = null;
+        right = null;
+    }
+}
+
+public class SymbolTable {
+        static Node insert(Node root, String identifier, String value) {
+        if (root == null) {
+            return new Node(identifier, value);
+        }
+
+        if (identifier.compareTo(root.identifier) < 0) {
+            root.left = insert(root.left, identifier, value);
+        } else if (identifier.compareTo(root.identifier) > 0) {
+            root.right = insert(root.right, identifier, value);
+        }
+
+        return root;
+    }
+
+    static String search(Node root, String identifier) {
+        if (root == null) {
+            return "Identifier not found";
+        }
+
+        if (identifier.equals(root.identifier)) {
+            return root.value;
+        } else if (identifier.compareTo(root.identifier) < 0) {
+            return search(root.left, identifier);
+        } else {
+            return search(root.right, identifier);
+        }
+    }
+
+    public static void main(String[] args) {
+        Node symbolTable = null;
+
+        symbolTable = insert(symbolTable, "88", "int");
+        symbolTable = insert(symbolTable, "76", "int");
+        symbolTable = insert(symbolTable, "47", "class");
+
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("Enter the identifier to search for: ");
+        String targetIdentifier = scanner.next();
+
+        String result = search(symbolTable, targetIdentifier);
+        System.out.println("Associated information: " + result);
+
+        scanner.close();
+    }
+}

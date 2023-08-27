@@ -1,0 +1,74 @@
+// Node structure for the hash table's linked list
+import java.util.Objects;
+
+class HashNode {
+    String key;
+    int value;
+    HashNode next;
+
+    HashNode(String key, int value) {
+        this.key = key;
+        this.value = value;
+        this.next = null;
+    }
+}
+
+class HashTable {
+    private static final int TABLE_SIZE = 100;
+    HashNode[] buckets;
+
+    HashTable() {
+        buckets = new HashNode[TABLE_SIZE];
+    }
+
+    private int hash(String key) {
+        int hash = 0;
+        for (char c : key.toCharArray()) {
+            hash = (hash * 31) + c;
+        }
+        return hash % TABLE_SIZE;
+    }
+
+    void insert(String key, int value) {
+        int index = hash(key);
+
+        HashNode newNode = new HashNode(key, value);
+
+        if (buckets[index] == null) {
+            buckets[index] = newNode;
+        } else {
+            HashNode current = buckets[index];
+            while (current.next != null) {
+                current = current.next;
+            }
+            current.next = newNode;
+        }
+    }
+
+        int search(String key) {
+        int index = hash(key);
+        HashNode current = buckets[index];
+
+        while (current != null) {
+            if (Objects.equals(current.key, key)) {
+                return current.value;
+            }
+            current = current.next;
+        }
+
+        return -1; // Key not found
+    }
+}
+
+public class HashTableExample {
+    public static void main(String[] args) {
+        HashTable table = new HashTable();
+
+        table.insert("x", 88);
+        table.insert("y", 76);
+        table.insert("+", 47);
+
+        System.out.println(table.search("x"));
+        System.out.println(table.search("y"));
+    }
+}
