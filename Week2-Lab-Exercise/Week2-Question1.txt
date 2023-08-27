@@ -3,7 +3,7 @@ import java.util.Scanner;
 
 class Node {
     String identifier;
-    String value; // Associated information
+    String value; 
     Node left;
     Node right;
 
