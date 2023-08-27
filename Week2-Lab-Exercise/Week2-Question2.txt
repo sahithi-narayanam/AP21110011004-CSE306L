@@ -56,7 +56,7 @@ class HashTable {
             current = current.next;
         }
 
-        return -1; // Key not found
+        return -1; 
     }
 }
 
