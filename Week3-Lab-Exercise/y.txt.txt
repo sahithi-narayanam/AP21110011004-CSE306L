@@ -1,0 +1,93 @@
+#
+ include : identifier
+ relational operator 
+ stdio : identifier
+.
+ h : identifier
+ relational operator 
+
+ 
+ int : keyword 
+ main : identifier
+(
+)
+{
+
+ 
+ int : keyword 
+ a : identifier
+[
+]
+{ 
+1: number
+, 
+2: number
+, 
+3: number
+, 
+4: number
+}
+;
+
+ 
+ int : keyword 
+ sum : identifier 
+0: number
+;
+
+ 
+ for : keyword 
+( 
+ int : keyword 
+ i : identifier 
+0: number
+;
+ i : identifier
+ relational operator  
+4: number
+;
+ i : identifier
++
++
+)
+{
+
+ sum : identifier
++
+ a : identifier
+[
+ i : identifier
+]
+;
+
+}
+
+ printf : identifier
+(
+"
+%
+ d : identifier
+"
+,
+ sum : identifier
+)
+;
+
+ return : identifier 
+0: number
+;
+
+}
+Symbol Table:
+1: include
+2: stdio
+3: h
+4: int
+5: main
+6: a
+7: sum
+8: for
+9: i
+10: printf
+11: d
+12: return
